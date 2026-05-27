@@ -11,27 +11,33 @@ The word "permacomputing" sounds like jargon. But the idea behind it is one of t
 
 Permaculture — short for *permanent agriculture* — is a design philosophy developed in the 1970s by Bill Mollison and David Holmgren. Its core insight: instead of fighting natural systems, design with them. Use what's already there. Build for resilience, not efficiency. Produce no waste. Ensure long-term fertility.
 
-The result is farms that get *more* productive over time, not less. Soil that improves each year. Systems that can be maintained and passed on.
+The result is farms that get *more* productive over time, not less. Soil that improves each year. Systems that can be maintained and passed on for generations.
 
 ## Now apply that to computing
 
-Permacomputing asks: what would software look like if we designed it the same way?
+Permacomputing asks: what would software look like if we designed it the same way? The community defines it as *"oriented around issues of resilience and regenerativity in computer and network technology."* That word — **regenerativity** — is doing a lot of work. Not just sustainable (do less harm), but regenerative (actively restore what's been depleted).
 
-Most software today is the opposite of permacultural. It's engineered for rapid deployment and fast obsolescence. Apps require ever-newer hardware to run. Dependencies multiply until no one understands the whole system. Code becomes unmaintainable and is thrown away, taking years of knowledge with it.
+Most software today is the opposite of permacultural. It's engineered for rapid deployment and fast obsolescence. Apps require ever-newer hardware to run. Dependencies multiply until no one understands the whole system. Code becomes unmaintainable and is thrown away, taking years of embedded knowledge with it.
 
 The ecological parallels are uncomfortable. Monoculture farming exhausts soil. Monoculture software exhausts hardware, expertise, and trust.
 
-## The permacomputing principles
+## The principles
 
-There's no single canonical manifesto, but the community that's formed around the idea has converged on a few core values:
+The [permacomputing community](https://permacomputing.net) has converged on ten principles. A few that stand out:
 
-**Longevity** — Build software that can last decades, not years. Choose stability over novelty. Resist the urge to rewrite for its own sake.
+**Observe First** — Before building anything, watch how the system actually behaves. Resist the urge to immediately add, fix, or optimise. The most valuable interventions are usually the ones you don't take.
 
-**Repairability** — Software should be understandable and fixable by the people who rely on it. Black boxes are antithetical to resilience.
+**Not Doing** — Sometimes the right answer is to *not* build the feature. Every line of code is a liability. Every dependency is a future vulnerability. The question isn't "can we?" but "should we?"
 
-**Minimal footprint** — Run on the least powerful hardware that does the job. Every watt saved is a watt that doesn't need generating. Every megabyte saved is bandwidth and storage that doesn't need provisioning.
+**Expose the Seams** — Treat understandability as an aesthetic principle, not an afterthought. Software that hides its internals creates dependency and brittleness. Legible systems can be fixed, adapted, and handed on.
 
-**Community ownership** — The people who depend on a tool should be able to own, govern, and maintain it. Open source is a prerequisite, not a bonus.
+**Care for All Hardware — Especially the Chips** — Manufacturing semiconductors is ecologically catastrophic. The most sustainable device is the one already in someone's hands. Build for the hardware that exists, not the hardware you wish people had.
+
+**Build on Solid Ground** — Prefer boring, battle-tested foundations over novelty. The most resilient systems are built on technologies with decades of operational history behind them.
+
+**Integrate Biological and Renewable Resources** — Where possible, align computation with natural rhythms — renewable energy sources, reduced cooling demands, hardware with a path to graceful degradation rather than landfill.
+
+These aren't just technical guidelines. They're a shift in attitude.
 
 ## Why this matters now
 
@@ -43,16 +49,19 @@ Permacomputing isn't a complete answer. But it's a useful constraint — a way o
 
 ## What it looks like in practice
 
-At Novatum, I try to apply permacomputing thinking concretely:
+At Novatum, we try to apply permacomputing thinking concretely:
 
 - Choosing boring, well-understood technology over trendy frameworks
 - Designing data models to last, not just to ship
 - Writing documentation as a first-class deliverable
 - Preferring static sites over heavy client-side apps when the use case allows
 - Being honest with clients about the true cost of complexity
+- Asking whether a feature needs to exist before building it
 
 None of this is dogma. Sometimes you need a complex system. But the question is worth asking first: *what's the simplest thing that would actually work?*
 
+That question — asked seriously — tends to lead somewhere interesting.
+
 ---
 
-That question — asked seriously — tends to lead somewhere interesting.
+*Want to go deeper? [permacomputing.net](https://permacomputing.net) is where the community builds shared understanding of these ideas.*
