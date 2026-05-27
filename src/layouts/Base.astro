@@ -2,6 +2,8 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import type { Lang } from '../i18n/ui';
 
 interface Props {
   title: string;
@@ -9,12 +11,14 @@ interface Props {
   image?: string;
 }
 
-const { title, description = 'Innovation in Motion — sustainable software for a better world.', image } = Astro.props;
+const lang = (Astro.currentLocale ?? getLangFromUrl(Astro.url)) as Lang;
+const t = useTranslations(lang);
+const { title, description = t('site.description'), image } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -25,7 +29,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
 
-    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={`${title} — Novatum`} />
@@ -33,10 +36,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     {image && <meta property="og:image" content={new URL(image, Astro.url)} />}
   </head>
   <body class="min-h-screen flex flex-col">
-    <Header />
+    <Header lang={lang} />
     <main class="flex-1">
       <slot />
     </main>
-    <Footer />
+    <Footer lang={lang} />
   </body>
 </html>

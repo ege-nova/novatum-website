@@ -1,0 +1,135 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import type { Lang } from '../../i18n/ui';
+
+const lang = (Astro.currentLocale ?? getLangFromUrl(Astro.url)) as Lang;
+const t = useTranslations(lang);
+---
+
+<Base title={t('home.hero.title') + ' ' + t('home.hero.emphasis')}>
+
+  <!-- Hero -->
+  <section class="max-w-6xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-24">
+    <div class="max-w-3xl">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-surface-2)] text-[var(--color-primary-dark)] text-sm font-medium mb-8">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+        </svg>
+        {t('home.badge')}
+      </div>
+
+      <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight" style="font-family: var(--font-heading)">
+        {t('home.hero.title')} <span class="text-[var(--color-primary)]">{t('home.hero.emphasis')}</span>
+      </h1>
+
+      <p class="text-xl text-[var(--color-text-muted)] leading-relaxed mb-10 max-w-2xl">
+        {t('home.hero.subtitle')}
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href={lang === 'en' ? '/contact' : `/${lang}/contact`}
+          class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[var(--color-cta)] text-[var(--color-cta-text)] font-semibold hover:bg-[var(--color-cta-dark)] transition-colors duration-200 cursor-pointer"
+        >
+          {t('home.hero.cta')}
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a
+          href={lang === 'en' ? '/about' : `/${lang}/about`}
+          class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-[var(--color-border)] text-[var(--color-text)] font-semibold hover:bg-[var(--color-surface)] transition-colors duration-200 cursor-pointer"
+        >
+          {t('home.hero.secondary')}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values strip -->
+  <section class="bg-[var(--color-surface)] border-y border-[var(--color-border)]">
+    <div class="max-w-6xl mx-auto px-6 py-12">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        {[
+          {
+            icon: `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>`,
+            title: t('home.values.greenIT.title'),
+            body: t('home.values.greenIT.body'),
+          },
+          {
+            icon: `<path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M2 12h4M18 12h4M12 2v4M12 18v4"/>`,
+            title: t('home.values.perma.title'),
+            body: t('home.values.perma.body'),
+          },
+          {
+            icon: `<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>`,
+            title: t('home.values.community.title'),
+            body: t('home.values.community.body'),
+          },
+          {
+            icon: `<circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>`,
+            title: t('home.values.innovation.title'),
+            body: t('home.values.innovation.body'),
+          },
+        ].map(({ icon, title, body }) => (
+          <div class="flex flex-col gap-3">
+            <div class="w-10 h-10 rounded-xl bg-[var(--color-surface-2)] flex items-center justify-center flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="text-[var(--color-primary)]" set:html={icon}/>
+            </div>
+            <h3 class="font-semibold text-[var(--color-text)]" style="font-family: var(--font-heading)">{title}</h3>
+            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="max-w-6xl mx-auto px-6 py-20">
+    <div class="mb-12">
+      <h2 class="text-3xl font-bold mb-4" style="font-family: var(--font-heading)">{t('home.services.heading')}</h2>
+      <p class="text-[var(--color-text-muted)] max-w-xl">{t('home.services.subheading')}</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {[
+        { title: t('home.services.dev.title'), description: t('home.services.dev.desc'), tags: ['Web apps', 'APIs', 'Automation'] },
+        { title: t('home.services.green.title'), description: t('home.services.green.desc'), tags: ['Digital footprint', 'Infrastructure', 'Practices'] },
+        { title: t('home.services.ai.title'), description: t('home.services.ai.desc'), tags: ['AI integration', 'Workflows', 'Open source'] },
+        { title: t('home.services.civic.title'), description: t('home.services.civic.desc'), tags: ['Community tools', 'Open source', 'Civic tech'] },
+      ].map(({ title, description, tags }) => (
+        <div class="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-6 hover:border-[var(--color-secondary)] hover:shadow-[var(--shadow-card)] transition-all duration-200">
+          <h3 class="text-lg font-semibold mb-2" style="font-family: var(--font-heading)">{title}</h3>
+          <p class="text-sm text-[var(--color-text-muted)] leading-relaxed mb-4">{description}</p>
+          <div class="flex flex-wrap gap-2">
+            {tags.map(tag => (
+              <span class="text-xs px-2.5 py-1 rounded-full bg-[var(--color-surface-2)] text-[var(--color-primary-dark)]">{tag}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA banner -->
+  <section class="max-w-6xl mx-auto px-6 pb-20">
+    <div class="bg-[var(--color-primary)] rounded-2xl px-8 py-12 md:px-12 text-center">
+      <h2 class="text-2xl md:text-3xl font-bold text-white mb-4" style="font-family: var(--font-heading)">
+        {t('home.cta.heading')}
+      </h2>
+      <p class="text-green-100 mb-8 max-w-lg mx-auto">{t('home.cta.body')}</p>
+      <a
+        href={lang === 'en' ? '/contact' : `/${lang}/contact`}
+        class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white text-[var(--color-primary-dark)] font-semibold hover:bg-green-50 transition-colors duration-200 cursor-pointer"
+      >
+        {t('home.cta.button')}
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+</Base>

@@ -1,0 +1,73 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import type { Lang } from '../../i18n/ui';
+
+const lang = (Astro.currentLocale ?? getLangFromUrl(Astro.url)) as Lang;
+const t = useTranslations(lang);
+---
+
+<Base title={t('about.title')} description={t('about.subtitle')}>
+  <div class="max-w-3xl mx-auto px-6 py-16 md:py-24">
+
+    <div class="mb-14">
+      <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-surface-2)] text-[var(--color-primary-dark)] text-sm font-medium mb-6">
+        {t('about.badge')}
+      </span>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6" style="font-family: var(--font-heading)">{t('about.title')}</h1>
+      <p class="text-xl text-[var(--color-text-muted)] leading-relaxed">{t('about.subtitle')}</p>
+    </div>
+
+    <div class="prose mb-16">
+      <h2>{t('about.name.heading')}</h2>
+      <p>{t('about.name.body')}</p>
+
+      <h2>{t('about.mission.heading')}</h2>
+      <p>{t('about.mission.p1')}</p>
+      <p>{t('about.mission.p2')}</p>
+
+      <h2>{t('about.approach.heading')}</h2>
+      <p>{t('about.approach.intro')}</p>
+      <p><strong>Green IT</strong> — {t('about.approach.greenIT').replace('Green IT — ', '')}</p>
+      <p><strong>Permacomputing</strong> — {t('about.approach.perma').replace('Permacomputing — ', '')}</p>
+
+      <h2>{t('about.who.heading')}</h2>
+      <p>{t('about.who.p1')}</p>
+      <p>{t('about.who.p2')}</p>
+
+      <blockquote>{t('about.who.quote')}</blockquote>
+    </div>
+
+    <div class="border-t border-[var(--color-border)] pt-14 mb-14">
+      <h2 class="text-2xl font-bold mb-8" style="font-family: var(--font-heading)">{t('about.beliefs.heading')}</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {[
+          { title: t('about.beliefs.t1'), body: t('about.beliefs.b1') },
+          { title: t('about.beliefs.t2'), body: t('about.beliefs.b2') },
+          { title: t('about.beliefs.t3'), body: t('about.beliefs.b3') },
+          { title: t('about.beliefs.t4'), body: t('about.beliefs.b4') },
+        ].map(({ title, body }) => (
+          <div class="bg-[var(--color-surface)] rounded-2xl p-5 border border-[var(--color-border)]">
+            <h3 class="font-semibold mb-2" style="font-family: var(--font-heading)">{title}</h3>
+            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="text-center">
+      <h2 class="text-2xl font-bold mb-4" style="font-family: var(--font-heading)">{t('about.cta.heading')}</h2>
+      <p class="text-[var(--color-text-muted)] mb-6">{t('about.cta.body')}</p>
+      <a
+        href={lang === 'en' ? '/contact' : `/${lang}/contact`}
+        class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[var(--color-cta)] text-[var(--color-cta-text)] font-semibold hover:bg-[var(--color-cta-dark)] transition-colors duration-200 cursor-pointer"
+      >
+        {t('about.cta.button')}
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</Base>
