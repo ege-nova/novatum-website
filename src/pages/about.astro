@@ -1,0 +1,97 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="About" description="The story behind Novatum — sustainable software consulting for communities and a solarpunk future.">
+
+  <div class="max-w-3xl mx-auto px-6 py-16 md:py-24">
+
+    <!-- Header -->
+    <div class="mb-14">
+      <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-surface-2)] text-[var(--color-primary-dark)] text-sm font-medium mb-6">
+        About Novatum
+      </span>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6" style="font-family: var(--font-heading)">
+        Innovation in Motion
+      </h1>
+      <p class="text-xl text-[var(--color-text-muted)] leading-relaxed">
+        A one-person software consultancy on a mission to prove that technology and ecology aren't opposites — they're partners.
+      </p>
+    </div>
+
+    <!-- Story -->
+    <div class="prose mb-16">
+      <h2>The name</h2>
+      <p>
+        <em>Novatum</em> fuses two Latin roots: <strong>nova</strong> (innovation, renewal) and <strong>momentum</strong> (motion, force). Innovation in Motion — not innovation for its own sake, but purposeful movement toward something better.
+      </p>
+
+      <h2>The mission</h2>
+      <p>
+        The dream is simple and ambitious in equal measure: travel the world, learn from different cultures and communities, and bring the best eco-friendly ideas back into software. Not just green-washing, but genuinely rethinking how we build, deploy, and maintain digital systems.
+      </p>
+      <p>
+        Software has an ecological footprint. Data centres consume enormous amounts of energy. Apps become obsolete after two years, discarding perfectly functional hardware. The industry has normalised waste and complexity at a scale most people don't see. Novatum exists to push back against that — one project at a time.
+      </p>
+
+      <h2>The approach</h2>
+      <p>
+        Two ideas guide every project:
+      </p>
+      <p>
+        <strong>Green IT</strong> — software engineered to consume less: less energy, less bandwidth, less hardware. Performance isn't a luxury; it's an environmental responsibility.
+      </p>
+      <p>
+        <strong>Permacomputing</strong> — borrowing from permaculture, the goal is to build software that ages well. Designed to be repaired, extended, and handed over. No planned obsolescence. No black boxes. Tools that communities can own.
+      </p>
+
+      <h2>Who we work with</h2>
+      <p>
+        Community organisations, cooperatives, small businesses, and solo founders who care about their impact. People building things that matter — not just things that scale.
+      </p>
+      <p>
+        If your project puts people and planet before profit, we're probably a good fit.
+      </p>
+
+      <blockquote>
+        "The best way to predict the future is to build it — but let's build one worth living in."
+      </blockquote>
+    </div>
+
+    <!-- Values grid -->
+    <div class="border-t border-[var(--color-border)] pt-14 mb-14">
+      <h2 class="text-2xl font-bold mb-8" style="font-family: var(--font-heading)">What we believe</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {[
+          { title: 'Technology serves people', body: 'Not the other way around. Tools should empower, not create dependency.' },
+          { title: 'Longevity over growth', body: 'Software that lasts a decade beats software that crashes in two years and leaves nothing behind.' },
+          { title: 'Open by default', body: 'Communities deserve to own and understand the tools they rely on.' },
+          { title: 'Learn from everywhere', body: 'The best ideas don\'t come from Silicon Valley. They come from everywhere.' },
+        ].map(({ title, body }) => (
+          <div class="bg-[var(--color-surface)] rounded-2xl p-5 border border-[var(--color-border)]">
+            <h3 class="font-semibold mb-2" style="font-family: var(--font-heading)">{title}</h3>
+            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center">
+      <h2 class="text-2xl font-bold mb-4" style="font-family: var(--font-heading)">Want to build something together?</h2>
+      <p class="text-[var(--color-text-muted)] mb-6">
+        Tell us about your project — no pitch decks required.
+      </p>
+      <a
+        href="/contact"
+        class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[var(--color-cta)] text-[var(--color-cta-text)] font-semibold hover:bg-[var(--color-cta-dark)] transition-colors duration-200 cursor-pointer"
+      >
+        Get in touch
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</Base>

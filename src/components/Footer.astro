@@ -1,0 +1,78 @@
+---
+---
+
+<footer class="border-t border-[var(--color-border)] bg-[var(--color-surface)] mt-20">
+  <div class="max-w-6xl mx-auto px-6 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <!-- Brand -->
+      <div>
+        <a href="/" class="flex items-center gap-2 mb-4 w-fit" aria-label="Novatum home">
+          <div class="w-7 h-7 rounded-lg bg-[var(--color-primary)] flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <span class="font-semibold text-[var(--color-text)]" style="font-family: var(--font-heading)">Novatum</span>
+        </a>
+        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed max-w-xs">
+          Innovation in Motion — sustainable software for communities, small businesses, and a solarpunk future.
+        </p>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <h3 class="text-sm font-semibold text-[var(--color-text)] mb-4" style="font-family: var(--font-heading)">
+          Navigate
+        </h3>
+        <ul class="space-y-2" role="list">
+          {[
+            { href: '/', label: 'Home' },
+            { href: '/about', label: 'About' },
+            { href: '/blog', label: 'Blog' },
+            { href: '/contact', label: 'Contact' },
+          ].map(({ href, label }) => (
+            <li>
+              <a
+                href={href}
+                class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors duration-200"
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="text-sm font-semibold text-[var(--color-text)] mb-4" style="font-family: var(--font-heading)">
+          Get in touch
+        </h3>
+        <p class="text-sm text-[var(--color-text-muted)] mb-4">
+          Have a project in mind? We'd love to hear about it.
+        </p>
+        <a
+          href="/contact"
+          class="inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] transition-colors duration-200 cursor-pointer"
+        >
+          Start a conversation
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="mt-10 pt-6 border-t border-[var(--color-border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-xs text-[var(--color-text-muted)]">
+        &copy; {new Date().getFullYear()} Novatum. Built with intention.
+      </p>
+      <p class="text-xs text-[var(--color-text-muted)]">
+        Powered by green energy &amp; open source.
+      </p>
+    </div>
+  </div>
+</footer>
