@@ -1,0 +1,232 @@
+---
+import Base from '../layouts/Base.astro';
+import { experiences, education, languages, topTechTags, allTechTags } from '../data/cv';
+
+const startYear = 2011;
+const currentYear = new Date().getFullYear();
+const yearsExp = currentYear - startYear;
+const uniqueCompanies = new Set(experiences.map((e) => e.employer ?? e.company)).size;
+const uniqueTech = new Set(experiences.flatMap((e) => e.techTags)).size;
+---
+
+<Base title="CV" description="Erwin Geuens — Full-Stack Developer & Analyst with 15+ years of experience across IoT, web, mobile and enterprise software.">
+  <div class="max-w-6xl mx-auto px-6 py-12">
+
+    <!-- Card hero -->
+    <div class="cv-card relative rounded-2xl border border-[var(--color-border)] bg-gradient-to-br from-[var(--color-surface)] to-[var(--color-surface-2)] p-8 mb-12 overflow-hidden print:break-inside-avoid">
+      <!-- decorative background grid -->
+      <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: radial-gradient(var(--color-primary) 1px, transparent 1px); background-size: 24px 24px;"></div>
+
+      <div class="relative grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 items-start">
+        <!-- Left: identity + stats -->
+        <div class="flex flex-col gap-5">
+          <div>
+            <div class="inline-block text-xs font-semibold uppercase tracking-widest text-[var(--color-primary)] mb-2 px-2 py-0.5 rounded bg-[var(--color-primary)]/10">Software Engineer</div>
+            <h1 class="text-4xl font-bold text-[var(--color-text)]" style="font-family: var(--font-heading)">Erwin Geuens</h1>
+            <p class="mt-2 text-[var(--color-text-muted)] max-w-xl leading-relaxed">
+              Versatile full-stack developer and analyst with a wide range of experience — from ambulance reporting systems to satellite configuration tooling. Adaptable across roles, teams, and technologies.
+            </p>
+          </div>
+
+          <!-- Stats row -->
+          <div class="flex flex-wrap gap-6">
+            <div class="text-center">
+              <div class="text-3xl font-bold text-[var(--color-primary)]" style="font-family: var(--font-heading)">{yearsExp}+</div>
+              <div class="text-xs text-[var(--color-text-muted)] uppercase tracking-wide mt-0.5">Years active</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-[var(--color-primary)]" style="font-family: var(--font-heading)">{uniqueCompanies}</div>
+              <div class="text-xs text-[var(--color-text-muted)] uppercase tracking-wide mt-0.5">Companies</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-[var(--color-primary)]" style="font-family: var(--font-heading)">{uniqueTech}+</div>
+              <div class="text-xs text-[var(--color-text-muted)] uppercase tracking-wide mt-0.5">Technologies</div>
+            </div>
+          </div>
+
+          <!-- Top tech badges -->
+          <div>
+            <div class="text-xs font-semibold uppercase tracking-widest text-[var(--color-text-muted)] mb-2">Core tech</div>
+            <div class="flex flex-wrap gap-2">
+              {topTechTags.map((tag) => (
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-[var(--color-primary)]/10 text-[var(--color-primary)] border border-[var(--color-primary)]/20">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <!-- Contact row -->
+          <div class="flex flex-wrap gap-4 text-sm text-[var(--color-text-muted)]">
+            <a href="mailto:egeuens@novatum.solutions" class="flex items-center gap-1.5 hover:text-[var(--color-primary)] transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              egeuens@novatum.solutions
+            </a>
+            <span class="flex items-center gap-1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/></svg>
+              +32 476 44 93 56
+            </span>
+            <span class="flex items-center gap-1.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              Westerlo, Belgium
+            </span>
+          </div>
+        </div>
+
+        <!-- Right: languages card -->
+        <div class="hidden md:flex flex-col gap-2 min-w-[140px]">
+          <div class="text-xs font-semibold uppercase tracking-widest text-[var(--color-text-muted)] mb-1">Languages</div>
+          {languages.map((lang) => (
+            <div class="flex items-center justify-between gap-4">
+              <span class="text-sm text-[var(--color-text)]">{lang.name}</span>
+              <span class="text-xs text-[var(--color-text-muted)]">{lang.level}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter bar -->
+    <div class="mb-8 print:hidden">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="text-sm font-semibold text-[var(--color-text-muted)] uppercase tracking-wide">Filter by tech</span>
+        <button
+          id="clear-filter"
+          class="hidden text-xs px-2 py-1 rounded-md bg-[var(--color-surface-2)] text-[var(--color-primary)] font-medium hover:bg-[var(--color-border)] transition-colors"
+        >
+          Clear
+        </button>
+      </div>
+      <div class="flex flex-wrap gap-2" id="filter-tags">
+        {allTechTags.map((tag) => (
+          <button
+            data-tag={tag}
+            class="filter-tag px-3 py-1 rounded-full text-xs font-medium border border-[var(--color-border)] text-[var(--color-text-muted)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors cursor-pointer"
+          >
+            {tag}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Experience timeline -->
+    <section aria-label="Experience" class="print:hidden">
+      <h2 class="text-xs font-semibold uppercase tracking-widest text-[var(--color-text-muted)] mb-6">Experience</h2>
+      <div class="flex flex-col gap-4" id="experience-list">
+        {experiences.map((exp) => (
+          <article
+            data-tags={exp.techTags.join(',')}
+            class="cv-entry rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 transition-opacity duration-200 print:break-inside-avoid"
+          >
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
+              <div>
+                <h3 class="font-semibold text-[var(--color-text)]" style="font-family: var(--font-heading)">
+                  {exp.role}
+                </h3>
+                <div class="text-sm text-[var(--color-primary)] font-medium">
+                  {exp.company}
+                  {exp.employer && exp.employer !== exp.company && (
+                    <span class="text-[var(--color-text-muted)] font-normal"> · {exp.employer}</span>
+                  )}
+                </div>
+              </div>
+              <time class="text-xs text-[var(--color-text-muted)] whitespace-nowrap sm:text-right">
+                {exp.period.start.replace('-', '/')} – {exp.period.end ? exp.period.end.replace('-', '/') : 'Present'}
+              </time>
+            </div>
+
+            <p class="text-sm text-[var(--color-text-muted)] mb-3 leading-relaxed">{exp.description}</p>
+
+            <ul class="text-sm text-[var(--color-text)] space-y-1 mb-4 list-none pl-0">
+              {exp.bullets.map((b) => (
+                <li class="flex gap-2">
+                  <span class="text-[var(--color-primary)] select-none mt-0.5">›</span>
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div class="flex flex-wrap gap-1.5">
+              {exp.techTags.map((tag) => (
+                <span class="entry-tag px-2 py-0.5 rounded-full text-xs font-medium bg-[var(--color-surface-2)] text-[var(--color-text-muted)] border border-[var(--color-border)]">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+      <p id="no-results" class="hidden text-center text-sm text-[var(--color-text-muted)] py-12">No matching experience found for the selected filter.</p>
+    </section>
+
+    <!-- Education -->
+    <section aria-label="Education" class="mt-12 print:hidden">
+      <h2 class="text-xs font-semibold uppercase tracking-widest text-[var(--color-text-muted)] mb-6">Education</h2>
+      {education.map((edu) => (
+        <div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 print:break-inside-avoid">
+          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
+            <div>
+              <h3 class="font-semibold text-[var(--color-text)]" style="font-family: var(--font-heading)">{edu.degree}</h3>
+              <div class="text-sm text-[var(--color-primary)] font-medium">{edu.institution}</div>
+              {edu.note && <div class="text-xs text-[var(--color-text-muted)] mt-1">{edu.note}</div>}
+            </div>
+            <time class="text-xs text-[var(--color-text-muted)]">{edu.year}</time>
+          </div>
+        </div>
+      ))}
+    </section>
+
+  </div>
+</Base>
+
+<script>
+  const filterButtons = document.querySelectorAll<HTMLButtonElement>('.filter-tag');
+  const entries = document.querySelectorAll<HTMLElement>('.cv-entry');
+  const clearBtn = document.getElementById('clear-filter')!;
+  const noResults = document.getElementById('no-results')!;
+
+  let activeTag: string | null = null;
+
+  function applyFilter() {
+    let visible = 0;
+    entries.forEach((entry) => {
+      const tags = (entry.dataset.tags ?? '').split(',');
+      const match = !activeTag || tags.includes(activeTag);
+      entry.style.display = match ? '' : 'none';
+      entry.style.opacity = match ? '1' : '0';
+      if (match) visible++;
+    });
+    noResults.classList.toggle('hidden', visible > 0);
+    clearBtn.classList.toggle('hidden', !activeTag);
+  }
+
+  filterButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const tag = btn.dataset.tag ?? '';
+      if (activeTag === tag) {
+        activeTag = null;
+        btn.classList.remove('border-[var(--color-primary)]', 'text-[var(--color-primary)]', 'bg-[var(--color-primary)]/10');
+      } else {
+        activeTag = tag;
+        filterButtons.forEach((b) => b.classList.remove('border-[var(--color-primary)]', 'text-[var(--color-primary)]', 'bg-[var(--color-primary)]/10'));
+        btn.classList.add('border-[var(--color-primary)]', 'text-[var(--color-primary)]', 'bg-[var(--color-primary)]/10');
+      }
+      applyFilter();
+    });
+  });
+
+  clearBtn.addEventListener('click', () => {
+    activeTag = null;
+    filterButtons.forEach((b) => b.classList.remove('border-[var(--color-primary)]', 'text-[var(--color-primary)]', 'bg-[var(--color-primary)]/10'));
+    applyFilter();
+  });
+</script>
+
+<style is:global>
+  @media print {
+    @page { margin: 0; }
+    .print\:hidden { display: none !important; }
+    .cv-card { border: 1pt solid #A7F3D0; margin: 1cm; }
+    header, footer { display: none !important; }
+  }
+</style>
