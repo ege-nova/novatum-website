@@ -70,9 +70,8 @@ const uniqueTech = new Set(experiences.flatMap((e) => e.techTags)).size;
             ))}
 
             <!-- QR code — print only -->
-            <div class="qr-placeholder hidden print:flex mt-4 w-full aspect-square rounded border-2 border-dashed border-[var(--color-border)] items-center justify-center">
-              <!-- replace contents with <img src="..." class="w-full h-full" /> when QR is ready -->
-              <span class="text-[8px] text-center text-[var(--color-text-muted)] leading-tight px-1">QR<br/>code</span>
+            <div class="hidden print:flex mt-4 w-full aspect-square rounded overflow-hidden items-center justify-center">
+              <img src="/qr-cv.svg" alt="novatum.solutions/cv" class="w-full h-full" />
             </div>
           </div>
         </div>
